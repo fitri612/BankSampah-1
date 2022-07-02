@@ -94,7 +94,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="94" splitType="Stretch">
+		<band height="79" splitType="Stretch">
 			<staticText>
 				<reportElement x="160" y="30" width="290" height="30" uuid="5960a7c3-0cf8-4595-b90c-2d09c2d13882"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -110,8 +110,8 @@
 				<text><![CDATA[UNIVERSITAS DIAN NUSWANTORO]]></text>
 			</staticText>
 			<image>
-				<reportElement x="50" y="0" width="90" height="80" uuid="70014883-bee5-445b-9fce-e906c09dc5b6"/>
-				<imageExpression><![CDATA["C:/Users/mrdan/Downloads/Logo UDINUS FIK.png"]]></imageExpression>
+				<reportElement x="92" y="4" width="50" height="50" uuid="5175f901-7f90-4ae8-8ded-601bdd69b9fd"/>
+				<imageExpression><![CDATA["D:/foto/logo/Logo UDINUS FIK.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -353,4 +353,10 @@
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
 </jasperReport>

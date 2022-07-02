@@ -9,6 +9,7 @@ import net.sf.jasperreports.view.JasperViewer;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -30,7 +31,6 @@ public class FormPengolahanData extends JFrame {
 
     private JPanel FormNilaiMhsPanel;
     private JTextField InputNama;
-    private JLabel Nama;
     private JTextField InputJenisSampah;
     private JTextField InputAlamat;
     private JTextField InputjumlahBerat;
@@ -46,13 +46,16 @@ public class FormPengolahanData extends JFrame {
     private JTable table;
     private JButton keluar;
     private JButton cetak;
-    private JLabel Harga;
+    private JTextField inputNIK;
+    private JLabel Nama;
     private JLabel Jenis_sampah;
     private JLabel Alamat;
     private JLabel Jumlah_berat;
+    private JLabel Harga;
     private JLabel hargaSampah;
-    private JTextField inputNIK;
-//    private JTextField InputNIK;
+    JPanel PanelAtas;
+//    private JPanel PanelAtas;
+    //    private JTextField InputNIK;
 
     public FormPengolahanData() throws SQLException{
         table1 = new DefaultTableModel();

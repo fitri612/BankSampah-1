@@ -4,24 +4,30 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DashboardForm extends JFrame {
     private JPanel dashboardPanel;
     private JLabel lbAdmin;
     private JButton btnRegister;
+    private JMenu menuBeranda;
+    private JMenuItem menuDataMhs;
+    private JMenuItem menuDataDosen;
+    private JMenuItem menuKeluar;
+    private JMenu menuLaporan;
+    private JMenuBar menuBar;
+    private JMenu menuPengolahanData;
 
     public DashboardForm() {
-        setTitle("Dashborad");
-        setContentPane(dashboardPanel);
-        setMinimumSize(new Dimension(500, 429));
-        setSize(1200, 700);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//        setTitle("Dashborad");
+//        setContentPane(dashboardPanel);
+//        setMinimumSize(new Dimension(500, 429));
+//        setSize(1200, 700);
+//        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         boolean hasRegistredUsers = connectToDatabase();
+
+
         if (hasRegistredUsers) {
             //show Login form
             LoginForm loginForm = new LoginForm(this);
@@ -50,6 +56,13 @@ public class DashboardForm extends JFrame {
                 dispose();
             }
         }
+        menuDataMhs.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                menuMHS();
+            }
+        });
+
         btnRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -66,11 +79,30 @@ public class DashboardForm extends JFrame {
         });
     }
 
+    public void menuMHS() {
+        FormPengolahanData frame = null;
+        try {
+            frame = new FormPengolahanData();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        try {
+            assert frame != null;
+            frame.setContentPane(new FormPengolahanData().PanelAtas);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        frame.pack();
+        frame.setVisible(true);
+        dispose();
+        this.setVisible(false);
+    }
+
     private boolean connectToDatabase() {
         boolean hasRegistredUsers = false;
 
         final String MYSQL_SERVER_URL = "jdbc:mysql://localhost/";
-        final String DB_URL = "jdbc:mysql://localhost/dataset_PBO?serverTimezone=UTC";
+        final String DB_URL = "jdbc:mysql://localhost/dataset_pbo?serverTimezone=UTC";
         final String USERNAME = "root";
         final String PASSWORD = "";
 
@@ -78,7 +110,7 @@ public class DashboardForm extends JFrame {
             //First, connect to MYSQL server and create the database if not created
             Connection conn = DriverManager.getConnection(MYSQL_SERVER_URL, USERNAME, PASSWORD);
             Statement statement = conn.createStatement();
-            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS dataset_PBO");
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS dataset_pbo");
             statement.close();
             conn.close();
 
@@ -118,5 +150,11 @@ public class DashboardForm extends JFrame {
 
     public static void main(String[] args) {
         DashboardForm myForm = new DashboardForm();
+        JFrame frame = new JFrame();
+        frame.setContentPane(myForm.dashboardPanel);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+
     }
 }

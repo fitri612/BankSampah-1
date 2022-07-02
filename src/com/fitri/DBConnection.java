@@ -8,7 +8,7 @@ public class DBConnection {
         try{
 
             String unicode="useSSL=false&autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8";
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/dataset_PBO?"+unicode, "haris", "180900");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/dataset_pbo?"+unicode, "root", "");
         }catch(Exception ex){
             System.out.println(ex.getMessage());
             System.out.println("couldn't connect!");
